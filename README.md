@@ -1,3 +1,3 @@
 # react-ts-shop
 
-Online shop which is built on React, Typescript on frontend and Node on backend.
+Online shop which is built with React, Typescript, Material UI on frontend and with NodeJS on backend.
