@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import Item from './components/Item'
+import ItemsList from './components/ItemsList'
 import NavBar from './components/NavBar'
 
 export default class App extends Component {
@@ -8,7 +8,7 @@ export default class App extends Component {
     return (
       <div className="App">
         <NavBar />
-        <Item description="Item 1"/>
+        <ItemsList />
       </div>
     );
   }
