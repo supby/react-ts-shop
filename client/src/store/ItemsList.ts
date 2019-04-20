@@ -1,5 +1,6 @@
 import { AnyAction, Action, Reducer, ActionCreator } from 'redux';
 import { AppThunkAction } from './';
+import testData from './testData'
 
 // types
 export const SHOW_ITEM_LIST = 'SHOW_ITEM_LIST';
@@ -25,12 +26,14 @@ type KnownAction = ShowItemsListAction;
 
 // action creators
 export const actionCreators = {
-    requestEmployees: (): AppThunkAction<KnownAction> => (dispatch, getState) => {
-        fetch(`api/items`)
-            .then(response => response.json() as Promise<Item[]>)
-            .then(data => {
-                dispatch({ type: SHOW_ITEM_LIST, items: data });
-            });
+    requestItems: (): AppThunkAction<KnownAction> => (dispatch, getState) => {
+        // fetch(`api/items`)
+        //     .then(response => response.json() as Promise<Item[]>)
+        //     .then(data => {
+        //         dispatch({ type: SHOW_ITEM_LIST, items: data });
+        //     });
+
+        dispatch({ type: SHOW_ITEM_LIST, items: testData.itemsList as Item[] });
     }
 };
 
