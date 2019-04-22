@@ -21,17 +21,21 @@ class ItemsList extends Component<ItemsListProps> {
         return (
             <Container text style={{ marginTop: '7em' }}>
                 <Header as='h1'>Items</Header>
-                <Grid container columns={3}>
-                    
-                </Grid>
+                { this.props.items.map(item => (
+                    <Grid container columns={3}>
+                        <ItemBox 
+                            key={item.id} 
+                            title={item.title} 
+                            description={item.description} />
+                    </Grid>))}
             </Container>
         );
     }
 }
 
 const mapStateToProps = (state: ApplicationState) => ({
-    items: state.itemList.items,
-    isLoading: state.itemList.isLoading
+    items: state.itemList ? state.itemList.items : [],
+    isLoading: state.itemList ? state.itemList.isLoading : false
   });
   
   export default connect(
