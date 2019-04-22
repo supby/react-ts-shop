@@ -1,6 +1,6 @@
 import { Action } from "redux";
 import { ThunkAction } from "redux-thunk";
-import { Item } from './types'
+import { Item, ItemsListState } from './types'
 import { ApplicationState } from '../';
 import testData from '../testData';
 
@@ -14,14 +14,13 @@ export interface ShowItemsListAction {
 
 // action creators
 export const actionCreators = {
-    requestItems: (): ThunkAction<void, ApplicationState, null, Action> => 
-        async (dispatch, state) => {
+    requestItems: (): ThunkAction<void, ItemsListState, null, Action> => 
+        (dispatch, state) => {
             // fetch(`api/items`)
             //     .then(response => response.json() as Promise<Item[]>)
             //     .then(data => {
             //         dispatch({ type: SHOW_ITEM_LIST, items: data });
             //     });
-
             dispatch({ type: SHOW_ITEM_LIST, items: testData.itemsList as Item[] });
         }
 };

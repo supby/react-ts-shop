@@ -11,8 +11,8 @@ import { ApplicationState, reducers } from './';
 export default function configureStore(initialState?: ApplicationState) {
     const createStoreWithMiddleware = compose(applyMiddleware(thunk))(createStore);
     
-    const allReducers = buildRootReducer(reducers);
-    return createStoreWithMiddleware(allReducers, initialState) as Store<ApplicationState>;
+    const rootReducer = buildRootReducer(reducers);
+    return createStoreWithMiddleware(rootReducer, initialState) as Store<ApplicationState>;
 }
 
 function buildRootReducer(allReducers: ReducersMapObject) {
