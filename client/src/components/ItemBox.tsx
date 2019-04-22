@@ -6,7 +6,7 @@ type Props = {
     description: string;
 };
 
-export default class Item extends Component<Props> {
+export default class ItemBox extends Component<Props> {
     render() {
         return (
             <Card>

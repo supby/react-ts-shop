@@ -13,11 +13,6 @@ export default function configureStore(initialState?: ApplicationState) {
     
     const allReducers = buildRootReducer(reducers);
     return createStoreWithMiddleware(allReducers, initialState) as Store<ApplicationState>;
-
-    // return createStore(
-    //     combineReducers(reducers),
-    //     applyMiddleware(thunk)
-    // )
 }
 
 function buildRootReducer(allReducers: ReducersMapObject) {
