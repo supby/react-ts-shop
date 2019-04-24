@@ -1,7 +1,6 @@
 import { Action } from "redux";
 import { ThunkAction } from "redux-thunk";
 import { Item, ItemsListState } from './types'
-import { ApplicationState } from '../';
 import testData from '../testData';
 
 export const SHOW_ITEM_LIST = 'SHOW_ITEM_LIST';

@@ -18,20 +18,18 @@ class ItemsList extends Component<ItemsListProps> {
     }
 
     render() {
-        console.log(this.props)
         return (
             <Container text style={{ marginTop: '7em' }}>
                 <Header as='h1'>Items</Header>
                 <Grid container columns={3}>
-                { 
-                    this.props.items.map(item => (
-                    <Grid.Column>
-                        <ItemBox 
-                            key={item.id} 
-                            title={item.title} 
-                            description={item.description} />
-                    </Grid.Column>))
-                }
+                    {
+                        this.props.items.map(item => (
+                            <Grid.Column key={item.id}>
+                                <ItemBox
+                                    title={item.title}
+                                    description={item.description} />
+                            </Grid.Column>))
+                    }
                 </Grid>
             </Container>
         );
@@ -39,12 +37,12 @@ class ItemsList extends Component<ItemsListProps> {
 }
 
 const mapStateToProps = (state: ApplicationState) => {
-    console.log(state);
-   return {
-    items: state.itemsList.items,
-    isLoading: false
-  }};
-  
+    return {
+        items: state.itemsList.items,
+        isLoading: false
+    }
+};
+
 export default connect(
     mapStateToProps,
     actionCreators
