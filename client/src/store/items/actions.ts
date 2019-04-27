@@ -13,13 +13,17 @@ export interface ShowItemsListAction {
 
 // action creators
 export const actionCreators = {
-    requestItems: (): ThunkAction<void, ItemsListState, null, Action> => 
+    requestItems: (filter?:string): ThunkAction<void, ItemsListState, null, Action> => 
         (dispatch, state) => {
             // fetch(`api/items`)
             //     .then(response => response.json() as Promise<Item[]>)
             //     .then(data => {
             //         dispatch({ type: SHOW_ITEM_LIST, items: data });
             //     });
-            dispatch({ type: SHOW_ITEM_LIST, items: testData.itemsList as Item[] });
+
+            let data = testData.itemsList as Item[];
+            if(filter) data = data.filter(e => e.title.search(filter) > -1)
+
+            dispatch({ type: SHOW_ITEM_LIST, items: data });
         }
 };
