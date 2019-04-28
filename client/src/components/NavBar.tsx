@@ -1,25 +1,9 @@
 import React, { useState } from 'react';
 import { Input, Image, Menu, Icon, Label, Button } from 'semantic-ui-react'
 import logo from '../logo.svg';
+import SearchBox from './SearchBox'
 
-interface NavBarProps {
-    onSearch(key: string): void;
-    //clearSearch(): void;
-}
-
-export default (props: NavBarProps) => {
-    const [searchKey, setSearchKey] = useState('');
-
-    const clearSearch = () => {
-        setSearchKey('');
-        props.onSearch('');
-    }
-
-    const getIcon = () => {
-        return searchKey
-            ? <Icon name='delete' link onClick={clearSearch} />
-            : null;
-    }
+export default () => {
     return (
         <Menu fixed='top' secondary >
             <Menu.Item>
@@ -27,15 +11,7 @@ export default (props: NavBarProps) => {
             </Menu.Item>
             <Menu.Menu position='right'>
                 <Menu.Item>
-                    <Input
-                        type='text'
-                        value={searchKey}
-                        onChange={(e) => setSearchKey(e.target.value)}
-                        icon={getIcon()}
-                        placeholder='Search...' />
-                    <Button circular icon style={{ marginLeft: '7px' }}>
-                        <Icon name='search' color='teal' onClick={(e) => props.onSearch(searchKey)} />
-                    </Button>
+                    <SearchBox />  
                 </Menu.Item>
             </Menu.Menu>
         </Menu>
