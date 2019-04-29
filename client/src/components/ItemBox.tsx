@@ -19,10 +19,7 @@ export default class ItemBox extends Component<Props> {
                     <Card.Description>{this.props.description}</Card.Description>
                 </Card.Content>
                 <Card.Content extra>
-                <a>
-                    <Icon name='user' />
-                    22 Friends
-                </a>
+                <Icon name='user' />$$$
                 </Card.Content>
             </Card>
         );

@@ -1,10 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router } from 'react-router';
+import { Router,  Route, Switch } from 'react-router';
 import { createBrowserHistory } from 'history';
 import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
-import { routes } from './router'
+import Home from './components/Home'
+import App from './App'
 import configureStore from './store/configureStore';
 import './index.css';
 import 'semantic-ui-css/semantic.min.css'
@@ -14,7 +15,13 @@ const store = configureStore();
 
 ReactDOM.render(
     <Provider store={ store }>
-        <Router history={ history } children={ routes } />
+        <App>
+            <Router history={ history }>
+                <Switch>
+                    <Route exact path='/' component={ Home } />
+                </Switch>
+            </Router>
+        </App>
     </Provider>,
     document.getElementById('root'));
 

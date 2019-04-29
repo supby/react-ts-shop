@@ -1,42 +1,19 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { Input, Image, Menu } from 'semantic-ui-react'
-import { ApplicationState } from '../store'
+import React, { useState } from 'react';
+import { Input, Image, Menu, Icon, Label, Button } from 'semantic-ui-react'
+import logo from '../logo.svg';
+import SearchBox from './SearchBox'
 
-interface NavBarState {
-    searchKey: string;
-}
-
-export default class NavBar extends Component<{}, NavBarState> {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            searchKey: ''
-        }
-    }
-
-    onSearchKeyChange = (e) => {
-        this.setState({searchKey: e.target.value});
-    }
-
-    render() {
-        return (
-            <Menu fixed='top' secondary >
+export default () => {
+    return (
+        <Menu fixed='top' secondary >
+            <Menu.Item>
+                <Image size='mini' src={logo} style={{ marginRight: '1.5em' }} />
+            </Menu.Item>
+            <Menu.Menu position='right'>
                 <Menu.Item>
-                    <Image size='mini' src='../logo.svg' style={{ marginRight: '1.5em' }} />
+                    <SearchBox />  
                 </Menu.Item>
-                <Menu.Menu position='right'>
-                    <Menu.Item>
-                        <Input
-                            icon='search'
-                            type='text'
-                            placeholder='Search...'
-                            value={this.state.searchKey}
-                            onChange={this.onSearchKeyChange} />
-                    </Menu.Item>
-                </Menu.Menu>
-            </Menu>
-        );
-    }
+            </Menu.Menu>
+        </Menu>
+    )
 }
