@@ -4,6 +4,6 @@ import typeDefs from './schema';
 
 const server = new ApolloServer({ typeDefs });
 
-server.listen().then(({ url }) => {
-    console.log(`🚀 Server ready at ${url}`)
+server.listen(4000).then(({ url }) => {
+    console.log(`🚀 Server ready at ${url}`);
 });

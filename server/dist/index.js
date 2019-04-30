@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const apollo_server_1 = require("apollo-server");
 const schema_1 = __importDefault(require("./schema"));
 const server = new apollo_server_1.ApolloServer({ typeDefs: schema_1.default });
-server.listen().then(({ url }) => {
+server.listen(4000).then(({ url }) => {
     console.log(`🚀 Server ready at ${url}`);
 });
 //# sourceMappingURL=index.js.map
