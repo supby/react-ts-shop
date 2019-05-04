@@ -5,6 +5,8 @@ export interface ItemsListState {
 
 export interface Item {
     id: number;
-    title: string;
+    name: string;
     description: string;
+    price: number;
+    image: string;
 }

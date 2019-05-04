@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Container, Header, Grid } from 'semantic-ui-react'
 import ItemBox from './ItemBox'
-import { Item, ItemsListState } from '../store/items/types';
+import { Item } from '../store/items/types';
 import { actionCreators } from '../store/items/actions'
 import { ApplicationState } from '../store'
 
@@ -25,9 +25,7 @@ class ItemsList extends Component<ItemsListProps> {
                     {
                         this.props.items.map(item => (
                             <Grid.Column key={item.id}>
-                                <ItemBox
-                                    title={item.title}
-                                    description={item.description} />
+                                <ItemBox {...item} />
                             </Grid.Column>))
                     }
                 </Grid>

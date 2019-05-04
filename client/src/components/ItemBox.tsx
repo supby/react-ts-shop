@@ -1,25 +1,21 @@
 import React, { Component } from 'react';
 import { Card, Icon, Image } from 'semantic-ui-react'
+import { Item } from '../store/items/types';
 
-type Props = {
-    title: string;
-    description: string;
-};
-
-export default class ItemBox extends Component<Props> {
+export default class ItemBox extends Component<Item> {
     render() {
         return (
             <Card>
                 <Image src='' />
                 <Card.Content>
-                    <Card.Header>{this.props.title}</Card.Header>
+                    <Card.Header>{this.props.name}</Card.Header>
                     <Card.Meta>
-                        <span className='date'>Created in 2015</span>
+                        <span className='date'>sale...</span>
                     </Card.Meta>
                     <Card.Description>{this.props.description}</Card.Description>
                 </Card.Content>
                 <Card.Content extra>
-                <Icon name='user' />$$$
+                    <Icon name='dollar sign' />{this.props.price}
                 </Card.Content>
             </Card>
         );
