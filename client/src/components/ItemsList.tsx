@@ -20,7 +20,6 @@ class ItemsList extends Component<ItemsListProps> {
     render() {
         return (
             <Container text style={{ marginTop: '7em' }}>
-                <Header as='h1'>Items</Header>
                 <Grid container columns={3}>
                     {
                         this.props.items.map(item => (

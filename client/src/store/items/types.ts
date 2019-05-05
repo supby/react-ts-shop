@@ -9,4 +9,5 @@ export interface Item {
     description: string;
     price: number;
     image: string;
+    rating: number;
 }

@@ -24,7 +24,6 @@ export const actionCreators = {
     dispatch,
     getState
   ) => {
-
     const filter = getState().itemsFilter;
     const products = await gqlClient.query({
       query: gql`
@@ -35,6 +34,12 @@ export const actionCreators = {
             description
             price
             image
+          },
+          reviews {
+            product {
+              id
+            },
+            rating
           }
         }
       `
