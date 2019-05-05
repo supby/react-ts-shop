@@ -12,7 +12,9 @@ export default class ItemBox extends Component<Item> {
                     <Card.Meta>
                         <span className='date'>sale...</span>
                     </Card.Meta>
-                    <Card.Description>{this.props.description}</Card.Description>
+                    <Card.Description>
+                        <Image src={`/product_images/${this.props.image}`} />
+                    </Card.Description>
                 </Card.Content>
                 <Card.Content extra>
                     <Icon name='dollar sign' />{this.props.price}
