@@ -1,12 +1,10 @@
 import { Action } from "redux";
 import { ThunkAction } from "redux-thunk";
 import ApolloClient from "apollo-boost";
-import gql from "graphql-tag";
-import { Item, ItemsListState } from "./types";
-import testData from "../testData";
+import { Item } from "./types";
 import { ApplicationState } from "../index";
-
-export const SHOW_ITEM_LIST = "SHOW_ITEM_LIST";
+import { SHOW_ITEM_LIST } from './constants'
+import { GET_PRODUCTS_QUERY } from './queries'
 
 const gqlClient = new ApolloClient({
   uri: "http://localhost:4466"
@@ -16,6 +14,7 @@ const gqlClient = new ApolloClient({
 export interface ShowItemsListAction {
   type: typeof SHOW_ITEM_LIST;
   items: Item[];
+  isLoading: boolean;
 }
 
 // action creators
@@ -24,31 +23,12 @@ export const actionCreators = {
     dispatch,
     getState
   ) => {
-    const filter = getState().itemsFilter;
+    const state = getState();
+    dispatch({ type: SHOW_ITEM_LIST, items: state.itemsList.items, isLoading: true });
     const products = await gqlClient.query({
-      query: gql`
-        {
-          products(where: { name_contains: "${filter.name}" }) {
-            id
-            name
-            description
-            price
-            image
-          },
-          reviews {
-            product {
-              id
-            },
-            rating
-          }
-        }
-      `
+      query: GET_PRODUCTS_QUERY,
+      variables: { filter: state.itemsFilter.name }
     });
-    dispatch({ type: SHOW_ITEM_LIST, items: products.data.products as Item[] });
-
-    // let data = testData.itemsList as Item[];
-    // const filter = getState().itemsFilter;
-    // if (filter) data = data.filter(e => e.name.search(filter.name) > -1);
-    // dispatch({ type: SHOW_ITEM_LIST, items: data });
+    dispatch({ type: SHOW_ITEM_LIST, items: products.data.products as Item[], isLoading: false });
   }
 };

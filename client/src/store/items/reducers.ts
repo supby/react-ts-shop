@@ -1,6 +1,7 @@
 import { AnyAction, Reducer } from "redux";
 import { ItemsListState } from './types';
-import { ShowItemsListAction, SHOW_ITEM_LIST } from './actions'
+import { ShowItemsListAction } from './actions'
+import { SHOW_ITEM_LIST } from './constants'
 
 type KnownAction = ShowItemsListAction;
 const unloadedState: ItemsListState = { items: [], isLoading: false };
@@ -12,7 +13,7 @@ export const itemsList: Reducer<ItemsListState> =
         case SHOW_ITEM_LIST:
             return {
                 items: action.items,
-                isLoading: false
+                isLoading: action.isLoading
             };
         default:
             return state
