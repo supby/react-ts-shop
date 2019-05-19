@@ -4,7 +4,7 @@ import { ShowItemsListAction } from './actions'
 import { SHOW_ITEM_LIST } from './constants'
 
 type KnownAction = ShowItemsListAction;
-const unloadedState: ItemsListState = { items: [], isLoading: false };
+const unloadedState: ItemsListState = { items: [], isLoading: true, page: 0 };
 
 export const itemsList: Reducer<ItemsListState> = 
     (state: ItemsListState = unloadedState, incomingAction: AnyAction ) => {
@@ -13,7 +13,8 @@ export const itemsList: Reducer<ItemsListState> =
         case SHOW_ITEM_LIST:
             return {
                 items: action.items,
-                isLoading: action.isLoading
+                isLoading: action.isLoading,
+                page: action.page
             };
         default:
             return state

@@ -8,7 +8,7 @@ export const GET_PRODUCTS_QUERY = gql`
       description
       price
       image
-    }
+    },
     reviews {
       product {
         id

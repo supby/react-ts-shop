@@ -6,11 +6,13 @@ import { Item } from '../store/items/types';
 import { actionCreators } from '../store/items/actions'
 import { ApplicationState } from '../store'
 import Loading from './Loading'
+import { RouteProps } from 'react-router';
 
 interface ItemsListProps {
     items: Item[];
     isLoading: boolean;
     requestItems: any;
+    page: number;
 }
 
 class ItemsList extends Component<ItemsListProps> {

@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router,  Route, Switch } from 'react-router';
+import { Router, Route, Switch } from 'react-router';
 import { createBrowserHistory } from 'history';
 import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
@@ -11,14 +11,24 @@ import './index.css';
 import 'semantic-ui-css/semantic.min.css'
 
 const history = createBrowserHistory();
-const store = configureStore();
+const store = configureStore({
+    itemsList: {
+        isLoading: true,
+        items: [],
+        page: 0
+    },
+    itemsFilter: {
+        name: ''
+    }
+});
 
 ReactDOM.render(
-    <Provider store={ store }>
+    <Provider store={store}>
         <App>
-            <Router history={ history }>
+            <Router history={history}>
                 <Switch>
-                    <Route exact path='/' component={ Home } />
+                    <Route exact path='/' component={Home} />
+                    <Route exact path='/:page(\d+)' component={Home} />
                 </Switch>
             </Router>
         </App>
