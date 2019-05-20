@@ -3,7 +3,7 @@ import { ThunkAction } from "redux-thunk";
 import ApolloClient from "apollo-boost";
 import { Item } from "./types";
 import { ApplicationState } from "../index";
-import { SHOW_ITEM_LIST } from "./constants";
+import { SHOW_ITEM_LIST, PAGE_SIZE } from './constants';
 import { GET_PRODUCTS_QUERY } from "./queries";
 import _ from "lodash";
 
@@ -16,24 +16,23 @@ export interface ShowItemsListAction {
   type: typeof SHOW_ITEM_LIST;
   items: Item[];
   isLoading: boolean;
-  page: number;
 }
 
 // action creators
 export const actionCreators = {
-  requestItems: (): ThunkAction<void, ApplicationState, null, Action> => async (
+  requestItems: (page:number): ThunkAction<void, ApplicationState, null, Action> => async (
     dispatch,
     getState
   ) => {
     const state = getState();
-    dispatch({
-      type: SHOW_ITEM_LIST,
-      items: state.itemsList.items,
-      isLoading: true
-    });
+    
     const queryResult = await gqlClient.query({
       query: GET_PRODUCTS_QUERY,
-      variables: { filter: state.itemsFilter.name }
+      variables: { 
+        filter: state.itemsFilter.name,
+        skip: page*PAGE_SIZE,
+        first: PAGE_SIZE  
+      }
     });
 
     const reviews = queryResult.data.reviews;

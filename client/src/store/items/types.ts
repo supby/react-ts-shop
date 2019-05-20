@@ -1,7 +1,6 @@
 export interface ItemsListState {
   isLoading: boolean;
   items: Item[];
-  page: number;
 }
 
 export interface Item {

@@ -1,23 +1,41 @@
 import React, { Component } from 'react';
 import ItemsList from './ItemsList'
-import { RouteProps, match } from 'react-router';
+import { match } from 'react-router';
+import { Item } from '../store/items/types';
+import { ApplicationState } from '../store/index';
+import { connect } from 'react-redux';
+import { actionCreators } from '../store/items/actions';
 
-interface HomeRouteParams {
-  page: string;
+interface ItemsListProps {
+  items: Item[];
+  isLoading: boolean;
+  requestItems: (page: number) => any;
 }
 
-interface DetailParams {
-  page: string;
+interface RouteProps {
+  match?: match<{ page: string }>;
 }
 
-interface DetailsProps {
-  match?: match<DetailParams>;
-}
-export default class Home extends Component<DetailsProps> {
+class Home extends Component<ItemsListProps & RouteProps> {
+  componentDidMount() {
+    this.props.requestItems(this.props.match ? +this.props.match.params.page : 0);
+  }
+
   render() {
-    const page = this.props.match ? this.props.match.params.page : 0;
     return (
-      <ItemsList page={+page} />
+      <ItemsList items={this.props.items} isLoading={this.props.isLoading} />
     );
   }
 }
+
+const mapStateToProps = (state: ApplicationState) => {
+  return {
+    items: state.itemsList.items,
+    isLoading: state.itemsList.isLoading
+  }
+};
+
+export default connect(
+  mapStateToProps,
+  actionCreators
+)(Home);

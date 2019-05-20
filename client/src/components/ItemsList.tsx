@@ -1,51 +1,25 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { Container, Header, Grid } from 'semantic-ui-react'
+import { Container, Grid } from 'semantic-ui-react'
 import ItemBox from './ItemBox'
 import { Item } from '../store/items/types';
-import { actionCreators } from '../store/items/actions'
-import { ApplicationState } from '../store'
 import Loading from './Loading'
-import { RouteProps } from 'react-router';
 
 interface ItemsListProps {
     items: Item[];
     isLoading: boolean;
-    requestItems: any;
-    page: number;
 }
 
-class ItemsList extends Component<ItemsListProps> {
-    componentDidMount() {
-        this.props.requestItems();
-    }
-
-    render() {
-        return (
-            <Loading isLoading={this.props.isLoading}>
-                <Container text style={{ marginTop: '7em' }}>
-                    <Grid container columns={3}>
-                        {
-                            this.props.items.map(item => (
-                                <Grid.Column key={item.id}>
-                                    <ItemBox {...item} />
-                                </Grid.Column>))
-                        }
-                    </Grid>
-                </Container>
-            </Loading>
-        );
-    }
-}
-
-const mapStateToProps = (state: ApplicationState) => {
-    return {
-        items: state.itemsList.items,
-        isLoading: state.itemsList.isLoading
-    }
-};
-
-export default connect(
-    mapStateToProps,
-    actionCreators
-)(ItemsList);
+export default (props: ItemsListProps) => (
+    <Loading isLoading={props.isLoading}>
+        <Container text style={{ marginTop: '7em' }}>
+            <Grid container columns={3}>
+                {
+                    props.items.map(item => (
+                        <Grid.Column key={item.id}>
+                            <ItemBox {...item} />
+                        </Grid.Column>))
+                }
+            </Grid>
+        </Container>
+    </Loading>
+);
