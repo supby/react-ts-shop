@@ -14,7 +14,8 @@ const history = createBrowserHistory();
 const store = configureStore({
     itemsList: {
         isLoading: true,
-        items: []
+        items: [],
+        count: 0
     },
     itemsFilter: {
         name: ''

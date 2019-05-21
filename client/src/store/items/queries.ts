@@ -15,5 +15,10 @@ export const GET_PRODUCTS_QUERY = gql`
       }
       rating
     }
+    productsConnection {
+      aggregate {
+        count
+      }
+    }
   }
 `;
