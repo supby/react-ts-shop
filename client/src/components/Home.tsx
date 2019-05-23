@@ -1,15 +1,19 @@
 import React, { Component, Fragment } from 'react';
 import ItemsList from './ItemsList'
-import { match, RouteComponentProps } from 'react-router';
+import { RouteComponentProps } from 'react-router';
 import { Item } from '../store/items/types';
 import { ApplicationState } from '../store/index';
 import { connect } from 'react-redux';
 import { actionCreators } from '../store/items/actions';
-import { Pagination, Icon } from 'semantic-ui-react';
+import { Pagination, Icon, Grid } from 'semantic-ui-react';
+import { PAGE_SIZE } from '../store/items/constants';
+import Loading from './Loading';
 
 interface ItemsListProps {
   items: Item[];
   isLoading: boolean;
+  count: number;
+  page: number;
   requestItems: (page: number) => any;
 }
 
@@ -18,8 +22,10 @@ interface RouteProps {
 }
 
 class Home extends Component<ItemsListProps & RouteComponentProps<RouteProps>> {
+  page = this.props.match ? +this.props.match.params.page : 0;
+
   componentDidMount() {
-    this.props.requestItems(this.props.match ? +this.props.match.params.page : 0);
+    this.props.requestItems(this.page);
   }
 
   onPageChange = (e, data) => {
@@ -29,19 +35,31 @@ class Home extends Component<ItemsListProps & RouteComponentProps<RouteProps>> {
 
   render() {
     return (
-      <Fragment>
-        <ItemsList items={this.props.items} isLoading={this.props.isLoading} />
-        <Pagination
-          defaultActivePage={5}
-          ellipsisItem={{ content: <Icon name='ellipsis horizontal' />, icon: true }}
-          firstItem={{ content: <Icon name='angle double left' />, icon: true }}
-          lastItem={{ content: <Icon name='angle double right' />, icon: true }}
-          prevItem={{ content: <Icon name='angle left' />, icon: true }}
-          nextItem={{ content: <Icon name='angle right' />, icon: true }}
-          totalPages={10}
-          onPageChange={this.onPageChange}
-        />
-      </Fragment>
+      <Loading isLoading={this.props.isLoading}>
+        <Grid centered columns={1}>
+          <Grid.Row centered>
+            <Grid.Column>
+              <ItemsList items={this.props.items} />
+            </Grid.Column>
+          </Grid.Row>
+          <Grid.Row centered>
+            <Grid.Column>
+              <Pagination
+                defaultActivePage={this.page}
+                ellipsisItem={{ content: <Icon name='ellipsis horizontal' />, icon: true }}
+                firstItem={{ content: <Icon name='angle double left' />, icon: true }}
+                lastItem={{ content: <Icon name='angle double right' />, icon: true }}
+                prevItem={{ content: <Icon name='angle left' />, icon: true }}
+                nextItem={{ content: <Icon name='angle right' />, icon: true }}
+                totalPages={Math.ceil(this.props.count / PAGE_SIZE)}
+                pointing
+                secondary
+                onPageChange={this.onPageChange}
+              />
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
+      </Loading>
     );
   }
 }

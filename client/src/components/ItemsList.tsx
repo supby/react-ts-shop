@@ -6,20 +6,17 @@ import Loading from './Loading'
 
 interface ItemsListProps {
     items: Item[];
-    isLoading: boolean;
 }
 
 export default (props: ItemsListProps) => (
-    <Loading isLoading={props.isLoading}>
-        <Container text style={{ marginTop: '7em' }}>
-            <Grid container columns={3}>
-                {
-                    props.items.map(item => (
-                        <Grid.Column key={item.id}>
-                            <ItemBox {...item} />
-                        </Grid.Column>))
-                }
-            </Grid>
-        </Container>
-    </Loading>
+    <Container text style={{ marginTop: '7em' }}>
+        <Grid container columns={3}>
+            {
+                props.items.map(item => (
+                    <Grid.Column key={item.id}>
+                        <ItemBox {...item} />
+                    </Grid.Column>))
+            }
+        </Grid>
+    </Container>
 );

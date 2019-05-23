@@ -1,5 +1,5 @@
 import React from 'react'
-import loading from '../images/giphy.gif'
+import { Loader, Dimmer } from 'semantic-ui-react'
 
 interface LoadingProps {
     isLoading: boolean;
@@ -7,6 +7,9 @@ interface LoadingProps {
 }
 
 export default (props: LoadingProps) => (<React.Fragment>
-    {props.isLoading && (<img src={loading} alt='Loading...' />)}
+    {props.isLoading && (
+        <Dimmer active inverted>
+            <Loader size='large' />
+        </Dimmer>)}
     {!props.isLoading && (props.children)}
 </React.Fragment>)
