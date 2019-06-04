@@ -40,14 +40,6 @@ export const actionCreators = {
 
     _.groupBy(reviews, v => v.product.id);
 
-    // const list = [
-    //   { product: { id: 17 }, rev: "ddd" },
-    //   { product: { id: 17 }, rev: "tttt" },
-    //   { product: { id: 20 }, rev: "bbbb" }
-    // ];
-
-    //console.log(_.groupBy(list, x => x.product.id))
-
     dispatch({
       type: SHOW_ITEM_LIST,
       payload: {

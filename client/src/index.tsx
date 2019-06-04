@@ -4,7 +4,7 @@ import { Router, Route, Switch } from 'react-router';
 import { createBrowserHistory } from 'history';
 import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
-import Home from './components/Home'
+import Home from './containers/Home'
 import App from './App'
 import configureStore from './store/configureStore';
 import './index.css';
@@ -28,6 +28,7 @@ ReactDOM.render(
             <Router history={history}>
                 <Switch>
                     <Route exact path='/' component={Home} />
+                    <Route exact path='/:page(\d+)' component={Home} />
                     <Route exact path='/:page(\d+)' component={Home} />
                 </Switch>
             </Router>

@@ -1,13 +1,13 @@
 import React, { Component, Fragment } from 'react';
-import ItemsList from './ItemsList'
+import ItemsList from '../components/ItemsList'
 import { RouteComponentProps } from 'react-router';
 import { Item } from '../store/items/types';
-import { ApplicationState } from '../store/index';
+import { ApplicationState } from '../store';
 import { connect } from 'react-redux';
 import { actionCreators } from '../store/items/actions';
 import { Pagination, Icon, Grid } from 'semantic-ui-react';
 import { PAGE_SIZE } from '../store/items/constants';
-import Loading from './Loading';
+import Loading from '../components/Loading';
 
 interface ItemsListProps {
   items: Item[];

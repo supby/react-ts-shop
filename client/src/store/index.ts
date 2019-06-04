@@ -8,6 +8,7 @@ import { itemsFilter } from './search/reducers'
 export interface ApplicationState {
     itemsList: ItemsListState;
     itemsFilter: ItemsFilter;
+    itemDetails: ItemDetails;
 }
 
 export const reducers = {
