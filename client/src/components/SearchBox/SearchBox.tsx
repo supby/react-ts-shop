@@ -2,9 +2,9 @@
 import React, { Component, Fragment } from 'react';
 import { Input, Image, Menu, Icon, Label, Button } from 'semantic-ui-react'
 import { connect } from 'react-redux'
-import { ApplicationState } from '../store'
-import { filterActionCreators } from '../store/search/actions'
-import { ItemsFilter } from '../store/search/types'
+import { ApplicationState } from '../../store'
+import { filterActionCreators } from '../../store/search/actions'
+import { ItemsFilter } from '../../store/search/types'
 import { match } from 'react-router';
 
 interface SearchBoxProps {

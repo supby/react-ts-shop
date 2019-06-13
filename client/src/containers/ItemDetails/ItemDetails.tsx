@@ -1,13 +1,15 @@
 import { PureComponent } from "react";
-import { ApplicationState } from "../store";
+import { ApplicationState } from "../../store";
 import { connect } from 'react-redux';
-import { actionCreators } from '../store/itemdetails/actions';
+import { actionCreators } from '../../store/itemdetails/actions';
 
 interface ItemDetailsProps {
 
 }
 class ItemDetails extends PureComponent<ItemDetailsProps> {
-
+  render() {
+    return (<div>Item details</div>) 
+  }
 }
 
 const mapStateToProps = (state: ApplicationState) => {

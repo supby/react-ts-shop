@@ -4,7 +4,7 @@ import { Router, Route, Switch } from 'react-router';
 import { createBrowserHistory } from 'history';
 import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
-import Home from './containers/Home'
+import Home from './containers/Home/Home'
 import App from './App'
 import configureStore from './store/configureStore';
 import './index.css';

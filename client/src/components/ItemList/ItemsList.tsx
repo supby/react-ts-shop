@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
-import { Container, Grid } from 'semantic-ui-react'
-import ItemBox from './ItemBox'
-import { Item } from '../store/items/types';
-import Loading from './Loading'
+import { Container, Grid } from 'semantic-ui-react';
+import ItemBox from '../ItemBox/ItemBox';
+import { Item } from '../../store/items/types';
+import './ItemList.css';
 
 interface ItemsListProps {
     items: Item[];
 }
 
 export default (props: ItemsListProps) => (
-    <Container text style={{ marginTop: '7em' }}>
+    <Container text className="itmlst-container">
         <Grid container columns={3}>
             {
                 props.items.map(item => (

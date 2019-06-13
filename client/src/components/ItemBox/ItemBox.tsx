@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Card, Icon, Image } from 'semantic-ui-react'
-import { Item } from '../store/items/types';
+import { Item } from '../../store/items/types';
 import Rater from 'react-rater'
 import 'react-rater/lib/react-rater.css'
 
@@ -8,7 +8,6 @@ export default class ItemBox extends Component<Item> {
     render() {
         return (
             <Card>
-                <Image src='' />
                 <Card.Content>
                     <Card.Header>{this.props.name}</Card.Header>
                     <Card.Meta>
