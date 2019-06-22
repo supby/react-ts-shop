@@ -6,7 +6,7 @@ import { SHOW_ITEM_DETAILS } from './constants'
 type KnownAction = ShowItemDetailsAction;
 const unloadedState: ItemDetails = { data: {}, isLoading: true };
 
-export const itemsList: Reducer<ItemDetails> = 
+export const itemDetails: Reducer<ItemDetails> = 
     (state: ItemDetails = unloadedState, incomingAction: AnyAction ) => {
     const action = incomingAction as KnownAction;
     switch (action.type) {

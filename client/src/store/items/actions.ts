@@ -31,19 +31,35 @@ export const actionCreators = {
       query: GET_PRODUCTS_QUERY,
       variables: {
         filter: state.itemsFilter.name,
-        skip: (page-1) * PAGE_SIZE,
+        skip: (page - 1) * PAGE_SIZE,
         first: PAGE_SIZE
       }
     });
 
-    const reviews = queryResult.data.reviews;
-
-    _.groupBy(reviews, v => v.product.id);
+    const ratingCounts = _.reduce(
+      queryResult.data.reviews,
+      (res, r) => {
+        res[r.product.id] = (res[r.product.id] || 0) + 1;
+        return res;
+      },
+      {}
+    );
+    const ratings = _.reduce(
+      queryResult.data.reviews,
+      (res, r) => {
+        res[r.product.id] = (res[r.product.id] || 0) + r.rating;
+        return res;
+      },
+      {}
+    );
 
     dispatch({
       type: SHOW_ITEM_LIST,
       payload: {
-        items: queryResult.data.products as Item[],
+        items: (queryResult.data.products as Item[]).map(p => ({
+          ...p,
+          rating: ratings[p.id] / ratingCounts[p.id]
+        })),
         isLoading: false,
         count: queryResult.data.productsConnection.aggregate.count
       }
