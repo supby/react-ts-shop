@@ -4,11 +4,12 @@ import { Router, Route, Switch } from 'react-router';
 import { createBrowserHistory } from 'history';
 import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
-import Home from './containers/Home/Home'
-import App from './App'
+import Home from './containers/Home/Home';
+import App from './App';
 import configureStore from './store/configureStore';
 import './index.css';
-import 'semantic-ui-css/semantic.min.css'
+import 'semantic-ui-css/semantic.min.css';
+import ItemDetails from './containers/ItemDetails/ItemDetails';
 
 const history = createBrowserHistory();
 const store = configureStore({
@@ -30,7 +31,7 @@ ReactDOM.render(
                 <Switch>
                     <Route exact path='/' component={Home} />
                     <Route exact path='/:page(\d+)' component={Home} />
-                    <Route exact path='/:page(\d+)' component={Home} />
+                    <Route exact path='/details/:id(\d+)' component={ItemDetails} />
                 </Switch>
             </Router>
         </App>

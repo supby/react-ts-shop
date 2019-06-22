@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { PureComponent } from 'react';
 import ItemsList from '../../components/ItemList/ItemsList'
 import { RouteComponentProps } from 'react-router';
 import { Item } from '../../store/items/types';
@@ -21,7 +21,7 @@ interface RouteProps {
   page: string;
 }
 
-class Home extends Component<ItemsListProps & RouteComponentProps<RouteProps>> {
+class Home extends PureComponent<ItemsListProps & RouteComponentProps<RouteProps>> {
   page = this.props.match ? +this.props.match.params.page : 0;
 
   componentDidMount() {
@@ -36,7 +36,7 @@ class Home extends Component<ItemsListProps & RouteComponentProps<RouteProps>> {
   render() {
     return (
       <Loading isLoading={this.props.isLoading}>
-        <Grid centered columns={1}>
+        <Grid centered columns={1} >
           <Grid.Row centered>
             <Grid.Column>
               <ItemsList items={this.props.items} />
