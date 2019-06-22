@@ -19,7 +19,8 @@ const store = configureStore({
     },
     itemsFilter: {
         name: ''
-    }
+    },
+    itemDetails: {}
 });
 
 ReactDOM.render(

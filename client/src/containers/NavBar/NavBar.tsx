@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Input, Image, Menu, Icon, Label, Button } from 'semantic-ui-react'
-import logo from '../logo.svg';
+import logo from './logo.svg';
 import SearchBox from '../../components/SearchBox/SearchBox'
 
 export default () => {
