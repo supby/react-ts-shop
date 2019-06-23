@@ -20,8 +20,7 @@ export default class ItemBox extends Component<Item> {
                     <Card.Meta>
                         <Rater total={5} rating={this.props.rating} />
                     </Card.Meta>
-                    <Card.Description>
-                    </Card.Description>
+                    <Card.Description>{this.props.description}</Card.Description>
                 </Card.Content>
                 <Card.Content extra>
                     <Icon name='dollar sign' />{this.props.price}

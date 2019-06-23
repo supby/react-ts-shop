@@ -3,6 +3,7 @@ import { ApplicationState } from "../../store";
 import { connect } from 'react-redux';
 import { actionCreators } from '../../store/itemdetails/actions';
 import Loading from "../../components/Loading/Loading";
+import { Header } from 'semantic-ui-react';
 
 interface ItemDetailsProps {
   isLoading: boolean;
@@ -11,7 +12,7 @@ class ItemDetails extends PureComponent<ItemDetailsProps> {
   render() {
     return (
       <Loading isLoading={this.props.isLoading}>
-        Items details
+        <Header as='h1'>Item Details</Header>
       </Loading>)
   }
 }
