@@ -1,11 +1,11 @@
 
-import React, { Component, Fragment } from 'react';
+import React, { Fragment, PureComponent } from 'react';
 import { Input, Image, Menu, Icon, Label, Button } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import { ApplicationState } from '../../store'
 import { filterActionCreators } from '../../store/search/actions'
 import { ItemsFilter } from '../../store/search/types'
-import { match } from 'react-router';
+import { match, RouteComponentProps } from 'react-router';
 
 interface SearchBoxProps {
     searchKey: string;
@@ -13,14 +13,7 @@ interface SearchBoxProps {
     applyItemsFilter(page: number): void;
 }
 
-interface RouteProps {
-    match?: match<{ page: string }>;
-}
-
-class SearchBox extends Component<SearchBoxProps & RouteProps> {
-
-    page = this.props.match ? +this.props.match.params.page : 0;
-
+class SearchBox extends PureComponent<SearchBoxProps> {
     onChange = (e) => {
         this.props.setItemsFilter({
             name: e.target.value
@@ -28,14 +21,14 @@ class SearchBox extends Component<SearchBoxProps & RouteProps> {
     }
 
     onSearch = (e) => {
-        this.props.applyItemsFilter(this.page);
+        this.props.applyItemsFilter(1);
     }
 
     clearSearch = () => {
         this.props.setItemsFilter({
             name: ''
         });
-        this.props.applyItemsFilter(this.page);
+        this.props.applyItemsFilter(1);
     }
 
     render() {

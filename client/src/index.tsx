@@ -16,7 +16,8 @@ const store = configureStore({
     itemsList: {
         isLoading: true,
         items: [],
-        count: 0
+        count: 0,
+        page: 1
     },
     itemsFilter: {
         name: ''

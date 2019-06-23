@@ -22,9 +22,10 @@ interface RouteProps {
 }
 
 class Home extends PureComponent<ItemsListProps & RouteComponentProps<RouteProps>> {
-  page = this.props.match ? +this.props.match.params.page : 0;
+  page = +(this.props.match.params.page || 1);
 
   componentDidMount() {
+    this.props.history.push(`${this.page}`);
     this.props.requestItems(this.page);
   }
 

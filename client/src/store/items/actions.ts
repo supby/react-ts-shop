@@ -60,6 +60,7 @@ export const actionCreators = {
           ...p,
           rating: ratings[p.id] / ratingCounts[p.id]
         })),
+        page: page,
         isLoading: false,
         count: queryResult.data.productsConnection.aggregate.count
       }

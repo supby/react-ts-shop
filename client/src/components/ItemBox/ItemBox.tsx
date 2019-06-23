@@ -8,19 +8,19 @@ export default class ItemBox extends Component<Item> {
     render() {
         return (
             <Card>
+                <Image
+                    src={`/product_images/${this.props.image}`}
+                    as='a'
+                    size='medium'
+                    href={`details/${this.props.id}`}
+                    target='_blank'
+                />
                 <Card.Content>
                     <Card.Header>{this.props.name}</Card.Header>
                     <Card.Meta>
                         <Rater total={5} rating={this.props.rating} />
                     </Card.Meta>
                     <Card.Description>
-                        <Image
-                            src={`/product_images/${this.props.image}`}
-                            as='a'
-                            size='medium'
-                            href={`details/${this.props.id}`}
-                            target='_blank'
-                        />
                     </Card.Description>
                 </Card.Content>
                 <Card.Content extra>
