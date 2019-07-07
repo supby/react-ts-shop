@@ -10,6 +10,7 @@ import configureStore from './store/configureStore';
 import './index.css';
 import 'semantic-ui-css/semantic.min.css';
 import ItemDetails from './containers/ItemDetails/ItemDetails';
+import { ItemDetailsData } from './store/itemdetails/types';
 
 const history = createBrowserHistory();
 const store = configureStore({
@@ -22,7 +23,10 @@ const store = configureStore({
     itemsFilter: {
         name: ''
     },
-    itemDetails: {}
+    itemDetails: {
+        data: {} as ItemDetailsData,
+        isLoading: true
+    }
 });
 
 ReactDOM.render(

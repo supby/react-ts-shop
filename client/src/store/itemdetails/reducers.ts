@@ -1,13 +1,13 @@
 import { AnyAction, Reducer } from "redux";
-import { ItemDetails } from './types';
+import { ItemDetailsState, ItemDetailsData } from './types';
 import { ShowItemDetailsAction } from './actions'
 import { SHOW_ITEM_DETAILS } from './constants'
 
 type KnownAction = ShowItemDetailsAction;
-const unloadedState: ItemDetails = { data: {}, isLoading: true };
+const unloadedState: ItemDetailsState = { data: {} as ItemDetailsData, isLoading: true };
 
-export const itemDetails: Reducer<ItemDetails> = 
-    (state: ItemDetails = unloadedState, incomingAction: AnyAction ) => {
+export const itemDetails: Reducer<ItemDetailsState> = 
+    (state: ItemDetailsState = unloadedState, incomingAction: AnyAction ) => {
     const action = incomingAction as KnownAction;
     switch (action.type) {
         case SHOW_ITEM_DETAILS:

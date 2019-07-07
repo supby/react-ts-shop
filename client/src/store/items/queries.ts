@@ -9,7 +9,7 @@ export const GET_PRODUCTS_QUERY = gql`
       price
       image
     }
-    reviews {
+    reviews(where: {product: {name_contains: $filter} }) {
       product {
         id
       }

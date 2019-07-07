@@ -3,14 +3,14 @@ import { ItemsListState } from './items/types'
 import { ItemsFilter } from './search/types'
 import { itemsList } from './items/reducers'
 import { itemsFilter } from './search/reducers'
-import { ItemDetails } from './itemdetails/types';
+import { ItemDetailsState } from './itemdetails/types';
 import { itemDetails } from './itemdetails/reducers';
 
 // The top-level state object
 export interface ApplicationState {
     itemsList: ItemsListState;
     itemsFilter: ItemsFilter;
-    itemDetails: ItemDetails;
+    itemDetails: ItemDetailsState;
 }
 
 export const reducers = {
