@@ -26,7 +26,7 @@ export const actionCreators = {
         query: GET_PRODUCT_DETAILS,
         variables: { id: id }
       });
-      console.log(queryResult.data);
+      
       dispatch({
         type: SHOW_ITEM_DETAILS,
         payload: {
