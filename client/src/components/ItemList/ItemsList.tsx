@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Container, Grid } from 'semantic-ui-react';
 import ItemBox from '../ItemBox/ItemBox';
 import { Item } from '../../store/items/types';

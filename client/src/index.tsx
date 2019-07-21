@@ -11,6 +11,7 @@ import './index.css';
 import 'semantic-ui-css/semantic.min.css';
 import ItemDetails from './containers/ItemDetails/ItemDetails';
 import { ItemDetailsData } from './store/itemdetails/types';
+import Login from './containers/Login/Login';
 
 const history = createBrowserHistory();
 const store = configureStore({
@@ -37,6 +38,7 @@ ReactDOM.render(
                     <Route exact path='/' component={Home} />
                     <Route exact path='/:page(\d+)' component={Home} />
                     <Route exact path='/details/:id(\d+)' component={ItemDetails} />
+                    <Route exact path='/login' component={Login} />
                 </Switch>
             </Router>
         </App>
